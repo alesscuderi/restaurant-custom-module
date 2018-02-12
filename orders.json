@@ -1,0 +1,25 @@
+[
+  {
+    "id":1,
+    "order":"Chickpeas pasta, ounce of wine, starters",
+    "token": "Pippo",
+    "bill": 40,
+    "status": "ready"
+  },
+
+  {
+    "id": 2,
+    "order": "Raw Steak, 2 pizzas, Massive Hamburger, diet coke",
+    "token": "Caio",
+    "bill": 150,
+    "status": "closed"
+  },
+
+  {
+    "id": 3,
+    "order": "5 pints of beer, chicken soup",
+    "token": "Sempronio",
+    "bill": 60,
+    "status": "new"
+  }
+]
