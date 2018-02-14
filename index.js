@@ -99,7 +99,6 @@ module.exports = {
   deleteOrder,
   setOrderReady,
   setOrderClosed,
-  showOrdersAs,
   showProfit,
   showByUser
 };
