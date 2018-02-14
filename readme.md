@@ -5,7 +5,7 @@ In addition, it allows the user to see the restaurant profits and shows orders b
 ## installation
 `npm install restaurantManager-alesscuderi --save`
 
-## Version: 1.1
+## Version: 1.2.1
 The filtering process has made much more simple and lightweight, as well as the set status process. The functions now don't involve any extra json.
 
 ## Functions
@@ -93,17 +93,6 @@ sets an order as closed
   } return null;
 }`
 
-### showOrdersAs (status)
-shows a JSON that shows all orders with the requested status
-`var showOrdersAs = function (status) {
-    if (status == "new") {
-        return news;
-    } else if (status == "ready") {
-        return readies;
-    } else if (status == "closed") {
-      return closed;
-    }
-  }`
 
 ### showProfit()
 shows the total income

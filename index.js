@@ -73,16 +73,6 @@ var setOrderClosed = function (id) {
   } return null;
 }
 
-var showOrdersAs = function (status) {
-    if (status == "new") {
-        return news;
-    } else if (status == "ready") {
-        return readies;
-    } else if (status == "closed") {
-      return closed;
-    }
-  }
-
 var showProfit = function () {
   var temp = 0;
   for (var index in orders) {
