@@ -1,21 +1,34 @@
 const orders = require('./orders.json');
-const readies = require('./readyOrders.json');
-const closed = require('./closedOrders.json');
-const news = require('./newOrders.json');
 
 var ordersCounter = orders.length+1
 
-var populateLists = function() {
-  for (var index in orders) {
-    if (orders[index].status == "closed") {
-      closed.push (orders[index])
-    } else if (orders[index].status == "ready") {
-      readies.push (orders[index])
-    } else if (orders[index].status == "new") {
-      news.push (orders[index])
-    }
+var filter = function (s) {
+  if (s === "ready") {
+    var ready = [];
+    for (var index in orders) {
+      if (orders[index].status == "ready") {
+        ready.push(orders[index])
+      }
+    } return ready;
+
+  } else if (s === "closed") {
+    var closed = [];
+    for (var index in orders) {
+      if (orders[index].status == "closed") {
+        closed.push(orders[index])
+      }
+    } return closed;
+
+  } else if (s === "new") {
+    var news = [];
+    for (var index in orders) {
+      if (orders[index].status == "new") {
+        news.push(orders[index])
+      }
+    } return news;
   }
 }
+
 
 var showOrders = function () {
   return orders;
@@ -44,20 +57,20 @@ var setOrderReady = function (id) {
   for (var index in orders) {
     if (orders[index].id == id) {
       orders[index].status = "ready";
-      readies.push(orders[index])
-      news.splice(orders[index])
-    }
+      console.log("the order " + id + "is now set as ready:");
+      return orders[index];
+      }
+    } return null;
   }
-}
 
 var setOrderClosed = function (id) {
   for (var index in orders) {
     if (orders[index].id == id) {
       orders[index].status = "closed";
-      closed.push(orders[index])
-      readies.splice(orders[index])
+      console.log("the order " + id + "is now set as closed:");
+      return orders[index];
     }
-  }
+  } return null;
 }
 
 var showOrdersAs = function (status) {
@@ -83,22 +96,14 @@ var showByUser = function (id) {
   var clientOrders = []
   for (var index in orders) {
     if (orders[index].token == id) {
-      clientOrders.push(
-        {
-          id: orders[index].id,
-          order: orders[index].order,
-          token: orders[index].token,
-          bill: orders[index].bill,
-          status: orders[index].status
-        }
-      )
+      clientOrders.push(orders[index])
     }
   }
   return clientOrders
 }
 
 module.exports = {
-  populateLists,
+  filter,
   showOrders,
   addOrder,
   deleteOrder,

@@ -5,20 +5,38 @@ In addition, it allows the user to see the restaurant profits and shows orders b
 ## installation
 `npm install restaurantManager-alesscuderi --save`
 
+## Version: 1.1
+The filtering process has made much more simple and lightweight, as well as the set status process. The functions now don't involve any extra json.
+
 ## Functions
-### populateLists()
+
+### filter(s)
 Places orders in different JSONs according to their status.
 
-`var populateLists = function() {
+`if (s === "ready") {
+  var ready = [];
+  for (var index in orders) {
+    if (orders[index].status == "ready") {
+      ready.push(orders[index])
+    }
+  } return ready;
+
+} else if (s === "closed") {
+  var closed = [];
   for (var index in orders) {
     if (orders[index].status == "closed") {
-      closed.push (orders[index])
-    } else if (orders[index].status == "ready") {
-      readies.push (orders[index])
-    } else if (orders[index].status == "new") {
-      news.push (orders[index])
+      closed.push(orders[index])
     }
-  }
+  } return closed;
+
+} else if (s === "new") {
+  var news = [];
+  for (var index in orders) {
+    if (orders[index].status == "new") {
+      news.push(orders[index])
+    }
+  } return news;
+}
 }`
 
 
@@ -52,16 +70,16 @@ deletes an order
 }`
 
 ### setOrderReady(id)
-sets an order as ready 
+sets an order as ready
 `var setOrderReady = function (id) {
   for (var index in orders) {
     if (orders[index].id == id) {
       orders[index].status = "ready";
-      readies.push(orders[index])
-      news.splice(orders[index])
-    }
-  }
-}`
+      console.log("the order " + id + "is now set as ready:");
+      return orders[index];
+      }
+    } return null;
+  }`
 
 ### setOrderClosed (id)
 sets an order as closed
@@ -69,14 +87,14 @@ sets an order as closed
   for (var index in orders) {
     if (orders[index].id == id) {
       orders[index].status = "closed";
-      closed.push(orders[index])
-      readies.splice(orders[index])
+      console.log("the order " + id + "is now set as closed:");
+      return orders[index];
     }
-  }
+  } return null;
 }`
 
 ### showOrdersAs (status)
-shows a JSON that shows all orders with the requested status 
+shows a JSON that shows all orders with the requested status
 `var showOrdersAs = function (status) {
     if (status == "new") {
         return news;
@@ -88,7 +106,7 @@ shows a JSON that shows all orders with the requested status
   }`
 
 ### showProfit()
-shows the total income 
+shows the total income
 
 `var showProfit = function () {
   var temp = 0;
@@ -99,7 +117,7 @@ shows the total income
   return profit;
 }`
 
-## showByUser 
+## showByUser
 shows the orders of a given user.
 `var showByUser = function (id) {
   var clientOrders = []
