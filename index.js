@@ -40,17 +40,19 @@ var addOrder = function (newOrder) {
     order: newOrder.order,
     token: newOrder.token,
     bill: newOrder.bill,
-    status: "new"
-  });
-}
-
+    status: "new"});
+    console.log("A new order has been Placed: ");
+    return newOrder;
+};
 
 var deleteOrder = function (id) {
   for (var index in orders) {
     if (orders[index].id == id) {
       orders.splice(index, 1)
+      console.log("the order " + id + " has been deleted:");
+      return orders;
     }
-  }
+  } return null;
 }
 
 var setOrderReady = function (id) {

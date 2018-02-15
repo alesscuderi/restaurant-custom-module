@@ -1,11 +1,11 @@
-# TodoManager
-This package contains the functions that manage a retaurant app and its users.
+# Restaurant Manager v1.3.2
+This package contains the functions that manage a restaurant app and its users.
 It allows add and delete orders, shows orders by their statuses and changes them.
 In addition, it allows the user to see the restaurant profits and shows orders by user
 ## installation
 `npm install restaurantManager-alesscuderi --save`
 
-## Version: 1.2.1
+## Version: 1.3.1
 The filtering process has made much more simple and lightweight, as well as the set status process. The functions now don't involve any extra json.
 
 ## Functions
