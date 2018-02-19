@@ -1,4 +1,4 @@
-# Restaurant Manager v1.3.4
+# Restaurant Manager v1.4.3
 This package contains the functions that manage a restaurant app and its users.
 It allows add and delete orders, shows orders by their statuses and changes them.
 In addition, it allows the user to see the restaurant profits and shows orders by user
@@ -128,20 +128,10 @@ shows the orders of a given user.
 
 ## showSingleOrder
 shows the orders at a given id.
-`var showByUser = function (id) {
-  var clientOrders = []
+`var showSingleOrder = function (id) {
   for (var index in orders) {
-    if (orders[index].token == id) {
-      clientOrders.push(
-        {
-          id: orders[index].id,
-          order: orders[index].order,
-          token: orders[index].token,
-          bill: orders[index].bill,
-          status: orders[index].status
-        }
-      )
-    }
-  }
-  return clientOrders
-}`
+    if (orders[index].id == id) {
+      return orders[index];
+      }
+    } return null;
+  }`
