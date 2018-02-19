@@ -26,9 +26,8 @@ var filter = function (s) {
         news.push(orders[index])
       }
     } return news;
-  }
+  } return null
 }
-
 
 var showOrders = function () {
   return orders;
@@ -41,7 +40,6 @@ var addOrder = function (newOrder) {
     token: newOrder.token,
     bill: newOrder.bill,
     status: "new"});
-    console.log("A new order has been Placed: ");
     return newOrder;
 };
 
@@ -49,7 +47,6 @@ var deleteOrder = function (id) {
   for (var index in orders) {
     if (orders[index].id == id) {
       orders.splice(index, 1)
-      console.log("the order " + id + " has been deleted:");
       return orders;
     }
   } return null;
@@ -59,17 +56,16 @@ var setOrderReady = function (id) {
   for (var index in orders) {
     if (orders[index].id == id) {
       orders[index].status = "ready";
-      console.log("the order " + id + "is now set as ready:");
       return orders[index];
       }
     } return null;
   }
 
+
 var setOrderClosed = function (id) {
   for (var index in orders) {
     if (orders[index].id == id) {
       orders[index].status = "closed";
-      console.log("the order " + id + "is now set as closed:");
       return orders[index];
     }
   } return null;
@@ -94,6 +90,14 @@ var showByUser = function (id) {
   return clientOrders
 }
 
+var showSingleOrder = function (id) {
+  for (var index in orders) {
+    if (orders[index].id == id) {
+      return orders[index];
+      }
+    } return null;
+  }
+
 module.exports = {
   filter,
   showOrders,
@@ -102,5 +106,6 @@ module.exports = {
   setOrderReady,
   setOrderClosed,
   showProfit,
-  showByUser
+  showByUser,
+  showSingleOrder
 };
